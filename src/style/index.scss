@@ -1,0 +1,9 @@
+// ~packageName/ -> node_modules/packageName/
+
+$--font-path: '~hui/packages/theme/fonts';
+
+@import '~hui/packages/theme/index.scss';
+
+@import '~@hui-pro/page/theme/index.scss';
+@import '~@hui-pro/layout/theme/index.scss';
+@import '~@hui-pro/empty/theme/index.scss';
