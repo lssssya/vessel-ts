@@ -1,8 +1,12 @@
+import type { ActionTree, ActionContext } from 'vuex'
+import { State } from './types'
+
 // 默认easyMock生成的文件在src/api/template下
 // import { apiGetUserInfoGet as getUserInfo } from '@/api/template'
 import * as types from './mutation-types'
-export default {
-  async setUserInfo(context) {
+
+const actions: ActionTree<State, any> = {
+  async setUserInfo(context: ActionContext<State, any>) {
     // userInfo模拟数据，真实开发环境中可以去掉，使用接口获取
     const data = {
       languageId: 'zh_CN',
@@ -19,3 +23,5 @@ export default {
     }
   },
 }
+
+export default actions

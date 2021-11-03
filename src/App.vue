@@ -1,26 +1,29 @@
 <template>
-  <h-page id="app">
-    <h-page-menu :menu="menu" />
-    <router-view />
-  </h-page>
+  <div id="app">
+    <img alt="Vue logo" src="./assets/logo.png">
+    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+  </div>
 </template>
 
-<script>
-import navList from './nav.config.js'
-export default {
-  name: 'App',
-  computed: {
-    menu() {
-      navList.forEach(nav => {
-        nav.title = this.$t ? this.$t(nav.title) : nav.title
-      })
-      const { userInfo } = this.$store.state
-      if (!userInfo) return []
-      // 展示有权限的菜单项
-      return navList.filter(nav => {
-        return (userInfo.code || []).includes(`${process.env.VUE_APP_CONTEXT}_${nav.menuCode}`)
-      })
-    },
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
+import HelloWorld from './components/HelloWorld.vue';
+
+@Component({
+  components: {
+    HelloWorld,
   },
-}
+})
+export default class App extends Vue {}
 </script>
+
+<style lang="scss">
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+</style>
